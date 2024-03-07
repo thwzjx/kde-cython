@@ -20,6 +20,15 @@ jobs:
     - name: Build
       run: |
         python setup.py build_ext --inplace
+    - name: Upload artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: my-artifact
+  download-file:
+    name: download-and-show-file
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
     - name: Show Directory
       run: |
         pwd
