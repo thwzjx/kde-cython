@@ -20,11 +20,22 @@ jobs:
     - name: Build
       run: |
         python setup.py build_ext --inplace
+    - name: Set up Python 3.9
+      uses: actions/setup-python@v3
+      with:
+        python-version: "3.9"
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        python -m pip install cython numpy
+    - name: Build
+      run: |
+        python setup.py build_ext --inplace
     - name: Upload artifact
       uses: actions/upload-artifact@v3
       with:
         name: my-artifact
-        path: kde.cpython-38-x86_64-linux-gnu.so
+        path: ./*.so
   download-file:
     name: download-and-show-file
     runs-on: ubuntu-latest
