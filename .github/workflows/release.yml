@@ -24,6 +24,7 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: my-artifact
+        path: kde.cpython-38-x86_64-linux-gnu.so
   download-file:
     name: download-and-show-file
     runs-on: ubuntu-latest
