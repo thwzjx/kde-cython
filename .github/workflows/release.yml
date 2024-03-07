@@ -20,6 +20,10 @@ jobs:
     - name: Build
       run: |
         python setup.py build_ext --inplace
+    - name: Show Directory
+      run: |
+        pwd
+        ls -la
     - name: Download artifact
       uses: actions/download-artifact@v3
       with:
