@@ -5,16 +5,18 @@ on:
 permissions:
   contents: read
 jobs:
-
-  build-linux-cp38:
+  build:
     runs-on: ubuntu-latest
-    container: quay.io/pypa/manylinux2014_x86_64
-
     steps:
-    - uses: actions/checkout@v2
-
-    - name: Install Python package dependencies
-      run: /opt/python/cp38-cp38m/bin/python -m pip install cython numpy
-
-    - name: Build binary wheel
-      run: /opt/python/cp38-cp38m/bin/python setup.py build_ext --inplace
+    - uses: actions/checkout@v3
+    - name: Set up Python 3.8
+      uses: actions/setup-python@v3
+      with:
+        python-version: "3.8"
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        python -m pip install cython numpy
+    - name: Build
+      run: |
+        python setup.py build_ext --inplace
