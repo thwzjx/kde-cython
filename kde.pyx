@@ -10,7 +10,7 @@ import cython
 import numpy as np
 cimport numpy as np
 from libc.math cimport exp, sqrt, M_PI, pow, cos
-
+np.import array()
 cdef double abs(double x):
     if x <= 0:
         return -x
